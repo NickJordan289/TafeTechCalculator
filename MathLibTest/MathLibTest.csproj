@@ -38,6 +38,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AlgebraicLib">
+      <HintPath>..\TechCalculator\TechCalculator\bin\Debug\AlgebraicLib.dll</HintPath>
+    </Reference>
+    <Reference Include="ArithmeticLib">
+      <HintPath>..\TechCalculator\TechCalculator\bin\Debug\ArithmeticLib.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\TechCalculator\packages\MSTest.TestFramework.1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
     </Reference>
@@ -46,6 +52,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="TrigonometricLib">
+      <HintPath>..\TechCalculator\TechCalculator\bin\Debug\TrigonometricLib.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="UnitTest1.cs" />
@@ -53,20 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AlgebraicLib\AlgebraicLib.csproj">
-      <Project>{f5310973-7c0e-4b58-b6e7-c81c8e1ba9a4}</Project>
-      <Name>AlgebraicLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ArithmeticLib\ArithmeticLib.csproj">
-      <Project>{ce41ec4e-beda-427d-91c9-53e3859e48c9}</Project>
-      <Name>ArithmeticLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TrigonometricLib\TrigonometricLib.csproj">
-      <Project>{fd5a8211-78cf-4f8b-baea-62a627ef2632}</Project>
-      <Name>TrigonometricLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

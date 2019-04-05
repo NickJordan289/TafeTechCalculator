@@ -42,7 +42,14 @@ namespace MathLibTest
         {
             double val = Arithmetic.Subtraction(1,1);
             double expected = 0;
+            Assert.AreEqual(expected, val);
 
+            val = Arithmetic.Subtraction(-1, -1);
+            expected = 0;
+            Assert.AreEqual(expected, val);
+
+            val = Arithmetic.Subtraction(1, 0);
+            expected = 1;
             Assert.AreEqual(expected, val);
         }
 
@@ -56,9 +63,19 @@ namespace MathLibTest
             expected = 1;
             Assert.AreEqual(expected, val);
 
-            val = Arithmetic.Division(1, 0);
-            expected = double.PositiveInfinity;
+            val = Arithmetic.Division(0, 10);
+            expected = 0;
             Assert.AreEqual(expected, val);
+
+            val = Arithmetic.Division(10, 3);
+            expected = 3.33333333333;
+            Assert.AreEqual(expected, val, 0.00000001);
+
+            val = Arithmetic.Division(10, -2);
+            expected = -5;
+            Assert.AreEqual(expected, val);
+
+            Assert.ThrowsException<Exception>(() => Arithmetic.Division(1, 0)); // 1/0 = invalid
         }
 
         [TestMethod]
@@ -73,6 +90,10 @@ namespace MathLibTest
 
             val = Arithmetic.Multiplication(10, 2);
             expected = 20;
+            Assert.AreEqual(expected, val);
+
+            val = Arithmetic.Multiplication(5, 0);
+            expected = 0;
             Assert.AreEqual(expected, val);
         }
 
@@ -94,6 +115,7 @@ namespace MathLibTest
             expected = 1;
             Assert.AreEqual(expected, val, 0.00000001);
 
+            Assert.ThrowsException<Exception>(() => Trigonometric.Tan(450.0, false)); // 450 deg = 90 deg == invalid
             Assert.ThrowsException<Exception>(() => Trigonometric.Tan(90.0, false)); // 90 deg == invalid
         }
 
@@ -153,6 +175,10 @@ namespace MathLibTest
             expected = 0;
             Assert.AreEqual(expected, val);
 
+            val = Algebraic.SquareRoot(2);
+            expected = 1.41421356237;
+            Assert.AreEqual(expected, val, 0.00000001);
+
             Assert.ThrowsException<Exception>(() => Algebraic.SquareRoot(-1)); // Imaginary number
         }
 
@@ -170,6 +196,10 @@ namespace MathLibTest
             expected = 0;
             Assert.AreEqual(expected, val, 0.00000001);
 
+            val = Algebraic.CubeRoot(2.0);
+            expected = 1.25992104989;
+            Assert.AreEqual(expected, val, 0.00000001);
+
             Assert.ThrowsException<Exception>(() => Algebraic.CubeRoot(-1)); // Imaginary number
         }
 
@@ -179,13 +209,15 @@ namespace MathLibTest
             double val;
             double expected;
 
+            val = Algebraic.Inverse(1);
+            expected = 1;
+            Assert.AreEqual(expected, val, 0.00000001);
+
             val = Algebraic.Inverse(5);
             expected = 0.2;
             Assert.AreEqual(expected, val, 0.00000001);
 
-            val = Algebraic.Inverse(0);
-            expected = double.PositiveInfinity;
-            Assert.AreEqual(expected, val);
+            Assert.ThrowsException<Exception>(() => Algebraic.Inverse(0)); // invalid
 
             val = Algebraic.Inverse(-1);
             expected = -1;

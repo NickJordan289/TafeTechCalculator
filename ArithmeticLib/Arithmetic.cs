@@ -16,6 +16,8 @@ namespace ArithmeticLib
 
         public static double Division(double A, double B)
         {
+            if (Double.IsInfinity(A/B)) 
+                throw new Exception("Div by 0");
             return A / B;
         }
 

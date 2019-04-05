@@ -10,7 +10,8 @@ namespace TrigonometricLib
         {
             if(!radians)
             {
-                if (a == 90.0 || a == 270.0) // undefined values
+                a %= 360.0; // wrap values greater than 360 to with standard circle
+                if (Math.Abs(a) == 90.0 || Math.Abs(a) == 270.0) // undefined values
                 {
                     throw new Exception("Undefined values in tan");
                 }
