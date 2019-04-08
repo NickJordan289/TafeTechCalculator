@@ -59,7 +59,7 @@ namespace TechCalculator
             ValueInput.Text += i.ToString();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Calculator_Load(object sender, EventArgs e)
         {
             Button0.Click += delegate (object s, EventArgs ee)
             {
@@ -104,21 +104,21 @@ namespace TechCalculator
         }
 
         // Equals button
-        private void buttonEquals_Click(object sender, EventArgs e)
+        private void ButtonEquals_Click(object sender, EventArgs e)
         {
-            if (validInput(ValueInput.Text)) // always validate before calculation
+            if (ValidateInput(ValueInput.Text)) // always validate before calculation
                 Calc(); // only calc if input is entered
         }
 
         // Delete / Reverse button
-        private void deleteButton_Click(object sender, EventArgs e)
+        private void DeleteButton_Click(object sender, EventArgs e)
         {
             if (ValueInput.Text.Length > 0) // only delete if there is something to delete
                 ValueInput.Text = ValueInput.Text.Substring(0, ValueInput.Text.Length - 1); // remove one character
         }
 
         // validate input text
-        private bool validInput(string input)
+        private bool ValidateInput(string input)
         {
             // not empty and not just - or .
             return (ValueInput.Text.Length > 0 && // len > 0
@@ -133,7 +133,7 @@ namespace TechCalculator
             ErrorDisplay.Text = ""; // clear error at start of calculation
 
             // only proceed if operation is set and input is valid
-            if (op == Operation.NULL || !validInput(ValueInput.Text))
+            if (op == Operation.NULL || !ValidateInput(ValueInput.Text))
             {
                 return; // exit calc
             }
@@ -267,9 +267,9 @@ namespace TechCalculator
         }
 
         // Addition button
-        private void buttonPlus_Click(object sender, EventArgs e)
+        private void ButtonPlus_Click(object sender, EventArgs e)
         {
-            if (validInput(ValueInput.Text)) // always validate before calculation
+            if (ValidateInput(ValueInput.Text)) // always validate before calculation
             {
                 Calc(); // perform calculation on current input
                 val1 = double.Parse(ValueInput.Text); // parse and set input for this operation
@@ -280,9 +280,9 @@ namespace TechCalculator
         }
 
         // Subtraction button
-        private void buttonMinus_Click(object sender, EventArgs e)
+        private void ButtonMinus_Click(object sender, EventArgs e)
         {
-            if (validInput(ValueInput.Text)) // always validate before calculation
+            if (ValidateInput(ValueInput.Text)) // always validate before calculation
             {
                 Calc(); // perform calculation on current input
                 val1 = double.Parse(ValueInput.Text); // parse and set input for this operation
@@ -297,9 +297,9 @@ namespace TechCalculator
         }
 
         // Multiplication button
-        private void buttonMult_Click(object sender, EventArgs e)
+        private void ButtonMult_Click(object sender, EventArgs e)
         {
-            if (validInput(ValueInput.Text)) // always validate before calculation
+            if (ValidateInput(ValueInput.Text)) // always validate before calculation
             {
                 Calc(); // perform calculation on current input
                 val1 = double.Parse(ValueInput.Text); // parse and set input for this operation
@@ -310,9 +310,9 @@ namespace TechCalculator
         }
 
         // Division button
-        private void buttonDiv_Click(object sender, EventArgs e)
+        private void ButtonDiv_Click(object sender, EventArgs e)
         {
-            if (validInput(ValueInput.Text)) // always validate before calculation
+            if (ValidateInput(ValueInput.Text)) // always validate before calculation
             {
                 Calc(); // perform calculation on current input
                 val1 = double.Parse(ValueInput.Text); // parse and set input for this operation
@@ -323,9 +323,9 @@ namespace TechCalculator
         }
 
         // Tangent button
-        private void buttonTan_Click(object sender, EventArgs e)
+        private void ButtonTan_Click(object sender, EventArgs e)
         {
-            if (validInput(ValueInput.Text)) // always validate before calculation
+            if (ValidateInput(ValueInput.Text)) // always validate before calculation
             {
                 val1 = double.Parse(ValueInput.Text); // parse and set input for this operation
                 prevOp = op; // keep track of previous, used for inplace functions
@@ -335,9 +335,9 @@ namespace TechCalculator
         }
 
         // Cosine button
-        private void buttonCos_Click(object sender, EventArgs e)
+        private void ButtonCos_Click(object sender, EventArgs e)
         {
-            if (validInput(ValueInput.Text)) // always validate before calculation
+            if (ValidateInput(ValueInput.Text)) // always validate before calculation
             {
                 val1 = double.Parse(ValueInput.Text); // parse and set input for this operation
                 prevOp = op; // keep track of previous, used for inplace functions
@@ -347,9 +347,9 @@ namespace TechCalculator
         }
 
         // Sine button
-        private void buttonSin_Click(object sender, EventArgs e)
+        private void ButtonSin_Click(object sender, EventArgs e)
         {
-            if (validInput(ValueInput.Text)) // always validate before calculation
+            if (ValidateInput(ValueInput.Text)) // always validate before calculation
             {
                 val1 = double.Parse(ValueInput.Text); // parse and set input for this operation
                 prevOp = op; // keep track of previous, used for inplace functions
@@ -359,7 +359,7 @@ namespace TechCalculator
         }
 
         // Inverse button
-        private void buttonInv_Click(object sender, EventArgs e)
+        private void ButtonInv_Click(object sender, EventArgs e)
         {
             prevOp = op; // keep track of previous, used for inplace functions
             op = Operation.INVERSE; // set new operation
@@ -367,7 +367,7 @@ namespace TechCalculator
         }
 
         // Square root button
-        private void buttonRoot_Click(object sender, EventArgs e)
+        private void ButtonRoot_Click(object sender, EventArgs e)
         {
             prevOp = op; // keep track of previous, used for inplace functions
             op = Operation.SQRT; // set new operation
@@ -375,7 +375,7 @@ namespace TechCalculator
         }
 
         // Cube root button
-        private void buttonRoot3_Click(object sender, EventArgs e)
+        private void ButtonRoot3_Click(object sender, EventArgs e)
         {
             prevOp = op; // keep track of previous, used for inplace functions
             op = Operation.CRT; // set new operation
@@ -383,7 +383,7 @@ namespace TechCalculator
         }
 
         // Clear all button
-        private void buttonC_Click(object sender, EventArgs e)
+        private void ButtonC_Click(object sender, EventArgs e)
         {
             // Reset all fields to default
             CurrentCalculation.Text = "";
@@ -393,13 +393,13 @@ namespace TechCalculator
         }
 
         // Clear entry button
-        private void buttonCE_Click(object sender, EventArgs e)
+        private void ButtonCE_Click(object sender, EventArgs e)
         {
             ValueInput.Clear(); // simply clear input field
         }
 
         // Allows user to type numbers and operations via keyboard
-        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        private void Calculator_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar >= 48 && e.KeyChar <= 57) // 0 through 9
             {
@@ -412,25 +412,25 @@ namespace TechCalculator
                 switch ((int)e.KeyChar) // switch on keycodes
                 {
                     case 8: // backspace
-                        deleteButton_Click(sender, e);
+                        DeleteButton_Click(sender, e);
                         break;
                     case 42: // *
-                        buttonMult_Click(sender, e); // same as mult button
+                        ButtonMult_Click(sender, e); // same as mult button
                         break;
                     case 43: // +
-                        buttonPlus_Click(sender, e); // same as add button
+                        ButtonPlus_Click(sender, e); // same as add button
                         break;
                     case 45: // -
-                        buttonMinus_Click(sender, e); // same as sub button
+                        ButtonMinus_Click(sender, e); // same as sub button
                         break;
                     case 47: // /
-                        buttonDiv_Click(sender, e); // same as div button
+                        ButtonDiv_Click(sender, e); // same as div button
                         break;
                     case 46: // .
                         if (!ValueInput.Text.Contains('.')) EnterChar(sender, e, '.'); // only allow single .
                         break;
                     case 61: // =
-                        buttonEquals_Click(sender, e); // same as equals
+                        ButtonEquals_Click(sender, e); // same as equals
                         break;
                 }
             }
